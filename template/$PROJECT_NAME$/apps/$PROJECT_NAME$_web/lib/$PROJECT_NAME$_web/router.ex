@@ -40,7 +40,10 @@ defmodule <%= @project_name_camel_case %>Web.Router do
     pipe_through :api
 
     forward "/api", Absinthe.Plug, schema: <%= @project_name_camel_case %>API.Schema
-    forward "/graphiql", Absinthe.Plug.GraphiQL, schema: <%= @project_name_camel_case %>API.Schema
+    forward "/graphiql", Absinthe.Plug.GraphiQL, 
+      schema: <%= @project_name_camel_case %>API.Schema<%= if assigns[:websockets] do %>,
+      socket: <%= @project_name_camel_case %>Web.UserSocket
+      <% end %>
   end
   <% end %>
   <%= if assigns[:html] do %>

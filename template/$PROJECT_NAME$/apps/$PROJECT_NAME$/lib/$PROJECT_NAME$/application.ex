@@ -13,7 +13,11 @@ defmodule <%= @project_name_camel_case %>.Application do
     Supervisor.start_link([
       <%= if assigns[:ecto] do %>
       supervisor(<%= @project_name_camel_case %>.Repo, []),
-      <% else %>
+      <% end %>
+      <%= if assigns[:websockets] do %>
+      <%= @project_name_camel_case %>.PubSub,
+      <% end %>
+      <%= unless assigns[:websockets] || assigns[:ecto] do %>
       # worker(module, args)
       <% end %>
     ], strategy: :one_for_one, name: <%= @project_name_camel_case %>.Supervisor)

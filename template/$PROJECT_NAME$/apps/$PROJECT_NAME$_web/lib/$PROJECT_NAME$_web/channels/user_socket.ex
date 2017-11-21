@@ -1,6 +1,9 @@
 <% MixTemplates.ignore_file_and_directory_unless(assigns[:websockets]) %>
 defmodule <%= @project_name_camel_case %>Web.UserSocket do
   use Phoenix.Socket
+  <%= if assigns[:websockets] && assigns[:api] == "graphql" do %>
+  use Absinthe.Phoenix.Socket, schema: <%= @project_name_camel_case %>API.Schema
+  <% end %>
 
   ## Channels
   # channel "room:*", <%= @project_name_camel_case %>Web.RoomChannel
