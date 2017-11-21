@@ -60,22 +60,21 @@ defmodule <%= @project_name_camel_case %>Web do
   def channel do
     quote do
       use Phoenix.Channel
-      <%= if assigns[:gettext] do %>import <%= @project_name_camel_case %>Web.Gettext<% end %>
+      <%= if assigns[:gettext] do %>
 
+      import <%= @project_name_camel_case %>Web.Gettext
+      <% end %>
+
+      # Channels should not broadcast events directly. Instead,
+      # they should call functions on `<%= @project_name_camel_case %>` and let
+      # those functions internally broadcast messages on `<%= @project_name_camel_case %>.PubSub` 
+      # as they see fit.
       import Phoenix.Channel,
         except: [
           broadcast: 3,
           broadcast!: 3,
           broadcast_from: 3,
           broadcast_from!: 3
-        ]
-
-      import <%= @project_name_camel_case %>.PubSub,
-        only: [
-          broadcast: 2,
-          broadcast!: 2,
-          broadcast_from: 2,
-          broadcast_from!: 2
         ]
     end
   end

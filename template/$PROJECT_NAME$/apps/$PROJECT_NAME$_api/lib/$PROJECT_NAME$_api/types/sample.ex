@@ -11,6 +11,8 @@ defmodule <%= @project_name_camel_case %>API.Types.Sample do
         import_fields :sample_queries
       end
   """
+  
+  use Absinthe.Schema.Notation
 
   alias <%= @project_name_camel_case %>API.Resolvers
 
