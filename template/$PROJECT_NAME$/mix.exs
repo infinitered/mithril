@@ -17,6 +17,11 @@ defmodule <%= @project_name_camel_case %>.Umbrella.Mixfile do
   end
 
   defp deps do
-    [{:ex_doc, ">= 0.0.0", only: [:dev, :test]}]
+    [
+      {:ex_doc, ">= 0.0.0", only: [:dev, :test]},
+      <%= if assigns[:error_reporting] == "honeybadger" do %>
+      {:honeybadger, ">= 0.7.0"}
+      <% end %>
+    ]
   end
 end

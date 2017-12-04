@@ -17,3 +17,10 @@ config :logger, :console,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
+
+<%= if assigns[:error_reporting] == "honeybadger" do %>
+config :honeybadger,
+  app: :<%= @project_name %>,
+  filter: <%= @project_name_camel_case %>.ErrorReporting.Filter,
+  filter_keys: [:password, :password_confirmation, :credit_card]
+<% end %>

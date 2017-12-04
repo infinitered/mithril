@@ -25,7 +25,13 @@ defmodule <%= @project_name_camel_case %>Web.Mixfile do
   def application do
     [
       mod: {<%= @project_name_camel_case %>Web.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [
+        :logger,
+        :runtime_tools,
+        <%= if assigns[:error_reporting] == "honeybadger" do %>
+        :honeybadger
+        <% end %>
+      ]
     ]
   end
 
@@ -44,7 +50,7 @@ defmodule <%= @project_name_camel_case %>Web.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, github: "phoenixframework/phoenix", override: true},
+      {:phoenix, ">= 1.3.0"},
       {:phoenix_pubsub, "~> 1.0"},<%= if assigns[:ecto] do %>
       {:phoenix_ecto, "~> 3.2"},<% end %><%= if assigns[:html] do %>
       {:phoenix_html, "~> 2.10"},<% end %><%= if assigns[:html] == "slim" do %>
