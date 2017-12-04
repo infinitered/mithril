@@ -21,6 +21,6 @@ import_config "#{Mix.env}.exs"
 <%= if assigns[:error_reporting] == "honeybadger" do %>
 config :honeybadger,
   app: :<%= @project_name %>,
-  filter_keys: [:password, :password_confirmation, :credit_card]
+  filter_keys: [:password, :password_confirmation, :credit_card],
   use_logger: true
 <% end %>
