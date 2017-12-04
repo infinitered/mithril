@@ -39,7 +39,7 @@ defmodule Mithril do
       email: [],
 
       # What error reporting service to use
-      error_reporting: [takes: "honeybadger", default: "honeybadger"],
+      error_reporting: [takes: "error reporting service (honeybadger)"],
 
       # Boolean: Whether this project needs internationalization via Gettext.
       gettext: [],
