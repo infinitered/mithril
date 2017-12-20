@@ -27,10 +27,7 @@ defmodule <%= @project_name_camel_case %>Web.Mixfile do
       mod: {<%= @project_name_camel_case %>Web.Application, []},
       extra_applications: [
         :logger,
-        :runtime_tools,
-        <%= if assigns[:error_reporting] == "honeybadger" do %>
-        :honeybadger
-        <% end %>
+        :runtime_tools
       ]
     ]
   end
