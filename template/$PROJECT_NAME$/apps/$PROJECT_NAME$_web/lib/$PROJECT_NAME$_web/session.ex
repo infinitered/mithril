@@ -8,7 +8,8 @@ defmodule <%= @project_name_camel_case %>Web.Session do
 
   alias <%= @project_name_camel_case %>.{
     Accounts,
-    Accounts.User
+    Accounts.User,
+    Accounts.Token
   }
 
   @doc """
@@ -28,8 +29,8 @@ defmodule <%= @project_name_camel_case %>Web.Session do
 
       {:ok, conn} = Session.sign_in(conn, {"valid@email.com", "password"})
   """
-  @spec sign_in(Plug.Conn.t, Accounts.user | Accounts.credential) :: 
-    {:ok, Plug.Conn.t} | 
+  @spec sign_in(Plug.Conn.t, Accounts.user | Accounts.credential) ::
+    {:ok, Plug.Conn.t} |
     Accounts.auth_failure
   def sign_in(conn, user_or_credential) do
     with {:ok, token, user} <- create_token(user_or_credential) do
@@ -65,6 +66,16 @@ defmodule <%= @project_name_camel_case %>Web.Session do
       {:ok, token, user}
     end
   end
+
+  defp create_token(%Token{token: token}) do
+    case Accounts.authenticate(%Token{token: token}) do
+      {:ok, user} ->
+        {:ok, %Token{token: token}, user}
+
+      {:error, _} ->
+        {:ok, %Token{token: token}, nil}
+    end
+  endx
 
   defp create_token(credential) do
     with {:ok, token} <- Accounts.tokenize(credential),
