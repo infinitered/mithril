@@ -67,6 +67,10 @@ defmodule <%= @project_name_camel_case %>Web.Session do
     end
   end
 
+  defp create_token(%Token{token: nil}) do
+    {:ok, %Token{token: "invalid token"}, nil}
+  end
+
   defp create_token(%Token{token: token}) do
     case Accounts.authenticate(%Token{token: token}) do
       {:ok, user} ->
@@ -75,7 +79,7 @@ defmodule <%= @project_name_camel_case %>Web.Session do
       {:error, _} ->
         {:ok, %Token{token: token}, nil}
     end
-  endx
+  end
 
   defp create_token(credential) do
     with {:ok, token} <- Accounts.tokenize(credential),
