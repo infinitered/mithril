@@ -57,7 +57,7 @@ defmodule <%= @project_name_camel_case %>Web.Mixfile do
       {:phoenix_html, "~> 2.10"},
       <% end %>
       <%= if assigns[:html] == "slim" do %>
-      {:phoenix_slime, "~> 0.8.0"},
+      {:phoenix_slime, "~> 0.12.0"},
       <% end %>
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       <%= if assigns[:websockets] && assigns[:api] == "graphql" do %>
