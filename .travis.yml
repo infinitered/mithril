@@ -1,4 +1,9 @@
 language: elixir
 elixir:
   - '1.5.2'
-script: ./bin/test
+addons:
+  postgresql: '9.4'
+services:
+  - postgresql
+script:
+  - bin/test
