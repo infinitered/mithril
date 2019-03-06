@@ -1,6 +1,6 @@
 language: elixir
 elixir:
-  - '1.5.2'
+  - '1.7.3'
 node_js: '10.15.3'
 addons:
   postgresql: '9.4'
