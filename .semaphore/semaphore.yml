@@ -8,6 +8,11 @@ agent:
 blocks:
   - name: Tests
     task:
+      env_vars:
+        - name: DATABASE_POSTGRESQL_USERNAME
+          value: postgres
+        - name: DATABASE_POSTGRESQL_PASSWORD
+          value: postgres
       prologue:
         commands:
           - kiex install 1.7.3
