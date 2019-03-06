@@ -8,4 +8,5 @@ services:
   - postgresql
 script:
   - npm i -g chromedriver
+  - npm i -g phantomjs-prebuilt
   - bin/test
