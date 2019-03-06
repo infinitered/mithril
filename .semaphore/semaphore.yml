@@ -15,4 +15,5 @@ blocks:
       jobs:
         - name: Tests
           commands:
+            - checkout
             - bin/test
