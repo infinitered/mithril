@@ -10,6 +10,6 @@ services:
   - postgresql
 script:
   - npm i -g phantomjs-prebuilt
-  - npm i -g chromedriver
+  - npm install -g chromedriver
   - phantomjs --wd &
   - bin/test
