@@ -10,5 +10,5 @@ services:
   - postgresql
 script:
   - npm i -g phantomjs-prebuilt
-  - phantomjs --wd
+  - phantomjs --wd &
   - bin/test
