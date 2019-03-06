@@ -1,7 +1,7 @@
 language: elixir
 elixir:
   - '1.7.3'
-node_js: '10.15.3'
+node_js: '11.9.0'
 addons:
   postgresql: '9.4'
 services:
