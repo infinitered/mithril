@@ -6,4 +6,5 @@ addons:
 services:
   - postgresql
 script:
+  - npm i -g chromedriver
   - bin/test
