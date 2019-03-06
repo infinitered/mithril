@@ -1,0 +1,18 @@
+version: v1.0
+name: Mithril
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: Tests
+    task:
+      prologue:
+        commands:
+          - kiex install 1.7.3
+          - sem-version elixir 1.7.3
+      jobs:
+        - name: Tests
+          commands:
+            - bin/test
