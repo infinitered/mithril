@@ -12,6 +12,7 @@ blocks:
         commands:
           - kiex install 1.7.3
           - sem-version elixir 1.7.3
+          - sem-service start postgres
       jobs:
         - name: Tests
           commands:
